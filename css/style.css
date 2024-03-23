@@ -1,0 +1,52 @@
+:root {
+  --main-font-family: sans-serif;
+  --main-background-color: #24353f;
+  --secondery-text-color: #17a2b8;
+}
+
+* {
+  font-family: var(--main-font-family);
+}
+
+body {
+  background-color: var(--main-background-color);
+}
+
+h1 {
+  color: var(--secondery-text-color);
+}
+
+input,
+textarea {
+  background-color: transparent !important;
+  color: #fff !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgb(182, 182, 182) !important;
+}
+
+input:focus,
+textarea:focus {
+  box-shadow: 0 0 0 0 transparent !important;
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  section.main div.container {
+    max-width: 1140px;
+  }
+}
+
+button:hover {
+  color: #fff !important;
+}
+
+p > a:hover {
+  text-decoration: underline !important;
+}
+
+section.content {
+  height: 75vh;
+}
