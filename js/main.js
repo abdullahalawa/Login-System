@@ -12,7 +12,7 @@ var loginPasswordInput = document.querySelector("#loginPasswordInput");
 // Users Repository
 var savedUsers = [];
 
-if (localStorage.length != 0) {
+if (localStorage.getItem("users") != null) {
   savedUsers = JSON.parse(localStorage.getItem("users"));
 }
 
@@ -31,15 +31,9 @@ function signupNewUsers() {
     savedUsers.push(newSignedUsers);
     localStorage.setItem("users", JSON.stringify(savedUsers));
   } else {
-    // make sure this email is not existed in savedUsers
-    var searchResult = savedUsers.filter((item) =>
-      item.email.includes(newSignedUsers.email)
-    );
-
-    console.log(searchResult.email);
-
-    if (searchResult.email != newSignedUsers.email) {
+    if (isUserExist(newSignedUsers.email) == false) {
       savedUsers.push(newSignedUsers);
+      console.log(savedUsers);
       localStorage.setItem("users", JSON.stringify(savedUsers));
     } else {
       console.log("exists");
@@ -47,8 +41,19 @@ function signupNewUsers() {
   }
 }
 
+// search for User in savedUsers
+// return result in object if exists
+// or return undefind if not
+function isUserExist(newAddedUserEmail) {
+  if (savedUsers.find((user) => user.email === newAddedUserEmail)) {
+    return true;
+  }
+
+  return false;
+}
+
 // EventListeners on the app
 signupButton.addEventListener("click", function (e) {
-  signupNewUsers();
   e.preventDefault();
+  signupNewUsers();
 });
