@@ -50,3 +50,7 @@ p > a:hover {
 section.content {
   height: 75vh;
 }
+
+.validation-msg {
+  font-size: 14px;
+}

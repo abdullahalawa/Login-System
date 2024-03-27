@@ -42,6 +42,12 @@
                   type="email"
                   placeholder="Enter your email"
                 />
+                <div class="validation-msg">
+                  <p class="text-start text-danger mt-1 d-none">
+                    Please add valid email address
+                  </p>
+                </div>
+
                 <input
                   id="signupPasswordInput"
                   class="form-control mt-3"
@@ -50,7 +56,10 @@
                 />
                 <div class="validation-msg">
                   <p class="text-success mt-3 d-none">Success</p>
-                  <p class="text-danger mt-3 d-none">Email Already Exist</p>
+                  <p class="text-danger mt-3 d-none">
+                    <b>Email Already Exist</b>, <br />if this is your account
+                    please signin or signup with new email address
+                  </p>
                 </div>
                 <button
                   id="signupButton"
