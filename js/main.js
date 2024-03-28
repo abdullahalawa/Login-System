@@ -8,6 +8,7 @@ var signupButton = document.querySelector("#signupButton");
 // login
 var loginEmailInput = document.querySelector("#loginEmailInput");
 var loginPasswordInput = document.querySelector("#loginPasswordInput");
+var loginBtn = document.querySelector("#loginBtn");
 
 // regex
 var mailRegex = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
@@ -82,20 +83,42 @@ function isValidMail(element, regex) {
   return true;
 }
 
-// console.log(
-//   signupEmailInput.nextElementSibling
-//     .querySelector("p")
-//     .classList.replace("d-none", "d-block")
-// );
+// login
+function userLogin(userMail, userPassword) {
+  if (savedUsers.find((user) => user.email === userMail)) {
+    window.location.href = "../home.html";
+  } else {
+  }
+}
 
 // EventListeners on the app
-signupButton.addEventListener("click", function (e) {
-  e.preventDefault();
-  signupNewUsers();
-});
+if (window.location.href === "../signup.html") {
+  // signup
+  signupButton.addEventListener("click", function (e) {
+    e.preventDefault();
+    signupNewUsers();
+  });
 
-signupButton.addEventListener("click", function (e) {
-  isValidMail(signupEmailInput, mailRegex);
-});
+  signupButton.addEventListener("click", function (e) {
+    isValidMail(signupEmailInput, mailRegex);
+  });
+}
 
-// console.log(mailRegex.test("a@a.com"));
+// login
+
+if (window.location.href === "../index.html") {
+}
+
+// loginBtn.addEventListener("click", function (e) {});
+
+function isLoginUserValid(loginEmail, loginPassword) {
+  var results = savedUsers.some(
+    (user) => user.email === loginEmail && user.password === loginPassword
+  );
+
+  if (results == true) {
+    return true;
+  } else {
+    return false;
+  }
+}
