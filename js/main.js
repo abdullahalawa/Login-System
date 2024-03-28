@@ -31,31 +31,36 @@ function signupNewUsers() {
     password: signupPassword,
   };
 
-  if (savedUsers.length == 0) {
+  if (
+    savedUsers.length == 0 &&
+    isValidMail(signupEmailInput, mailRegex) == true
+  ) {
     savedUsers.push(newSignedUsers);
     localStorage.setItem("users", JSON.stringify(savedUsers));
   } else {
-    if (isUserExist(newSignedUsers.email) == false) {
+    if (
+      isUserExist(newSignedUsers.email) == false &&
+      isValidMail(signupEmailInput, mailRegex) == true
+    ) {
       savedUsers.push(newSignedUsers);
       console.log(savedUsers);
       localStorage.setItem("users", JSON.stringify(savedUsers));
       window.location.href = "../index.html";
     } else {
-      signupPasswordInput.nextElementSibling.children[1].classList.replace(
-        "d-none",
-        "d-block"
-      );
+      console.log("Error exists");
     }
   }
 }
-
-console.log();
 
 // search for User in savedUsers
 // return result in object if exists
 // or return undefind if not
 function isUserExist(newAddedUserEmail) {
   if (savedUsers.find((user) => user.email === newAddedUserEmail)) {
+    signupPasswordInput.nextElementSibling.children[1].classList.replace(
+      "d-none",
+      "d-block"
+    );
     return true;
   }
 
@@ -64,16 +69,24 @@ function isUserExist(newAddedUserEmail) {
 
 // email validation
 function isValidMail(element, regex) {
-  console.log(element.value.test(regex));
-
-  if (element.value.test(regex) != true) {
-    element.nextElementSibling.classList.replace("d-none", "d-block");
-    return true;
+  if (regex.test(element.value) != true) {
+    element.nextElementSibling
+      .querySelector("p")
+      .classList.replace("d-none", "d-block");
+    return false;
   }
 
-  element.nextElementSibling.classList.replace("d-block", "d-none");
-  return false;
+  element.nextElementSibling
+    .querySelector("p")
+    .classList.replace("d-block", "d-none");
+  return true;
 }
+
+// console.log(
+//   signupEmailInput.nextElementSibling
+//     .querySelector("p")
+//     .classList.replace("d-none", "d-block")
+// );
 
 // EventListeners on the app
 signupButton.addEventListener("click", function (e) {
@@ -81,8 +94,8 @@ signupButton.addEventListener("click", function (e) {
   signupNewUsers();
 });
 
-signupPasswordInput.addEventListener("onInput", function (e) {
+signupButton.addEventListener("click", function (e) {
   isValidMail(signupEmailInput, mailRegex);
 });
 
-console.log(mailRegex.test("a@a.com"));
+// console.log(mailRegex.test("a@a.com"));
