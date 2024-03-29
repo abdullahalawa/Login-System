@@ -43,7 +43,10 @@
                   placeholder="Enter your email"
                 />
                 <div class="validation-msg">
-                  <p class="text-start text-danger mt-1 d-none">
+                  <p
+                    id="mailValidationMsg"
+                    class="text-start text-danger mt-1 d-none"
+                  >
                     Please add valid email address
                   </p>
                 </div>
@@ -55,8 +58,10 @@
                   placeholder="Enter your password"
                 />
                 <div class="validation-msg">
-                  <p class="text-success mt-3 d-none">Success</p>
-                  <p class="text-danger mt-3 d-none">
+                  <p id="emptyError" class="text-danger mt-3 d-none">
+                    Please fill all feilds!
+                  </p>
+                  <p id="emailError" class="text-danger mt-3 d-none">
                     <b>Email Already Exist</b>, <br />if this is your account
                     please signin or signup with new email address
                   </p>
