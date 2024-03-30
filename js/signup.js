@@ -54,7 +54,7 @@ function signupNewUsers() {
   } else {
     savedUsers.push(newSignedUsers);
     localStorage.setItem("users", JSON.stringify(savedUsers));
-    location.replace("https://" + location.hostname + "/index.html");
+    window.location.replace("../index.html");
   }
 }
 

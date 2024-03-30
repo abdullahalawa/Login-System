@@ -3,8 +3,6 @@ var loginEmailInput = document.querySelector("#loginEmailInput");
 var loginPasswordInput = document.querySelector("#loginPasswordInput");
 var loginBtn = document.querySelector("#loginBtn");
 
-function isValidUserLogin() {}
-
 // Signin exsiting users
 function userLogin() {
   var signedEmail = loginEmailInput.value;
@@ -41,13 +39,10 @@ function userLogin() {
     (x) => x.email === signedInUser.email && x.password == signedInUser.password
   );
 
-  console.log(login);
-
   if (login == undefined) {
     document
       .querySelector("#wrongCreds")
       .classList.replace("d-none", "d-block");
-    console.log("i am here");
     return false;
   } else if (login != undefined) {
     document

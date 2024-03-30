@@ -5,7 +5,7 @@ var wlcMsg = document.querySelector("#welcomeMsg");
 var user = sessionStorage.getItem("loggedinUser");
 
 if (user == null) {
-  location.replace("https://" + location.hostname + "/index.html");
+  window.location.replace("../index.html");
 }
 
 wlcMsg.textContent = "Welcome " + user;
